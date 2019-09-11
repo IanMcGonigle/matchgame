@@ -1,0 +1,74 @@
+.Banner {
+  --squareSize: 300px;
+  --halfSquare: var(--squareSize) / 2;
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  width: 100vw;
+
+  %pinkSquare {
+    position: fixed;
+    height: var(--squareSize);
+    width: var(--squareSize);
+    background: rgb(238,174,202);
+    transform-origin: center;
+    top: calc( 50% - var(--halfSquare) );
+    left: calc( 50% - var(--halfSquare) );
+  }
+
+  &__bg {
+    @extend %pinkSquare;
+    box-shadow: 0px 0px 250px 10px rgba(0,0,0,0.75);
+    animation: rotating 20s linear infinite;
+    &::before {
+      content: "";
+      display: block;
+      @extend %pinkSquare;
+      transform: rotate(33deg);
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      @extend %pinkSquare;
+      transform: rotate(66deg);
+    }
+  }
+
+  &__headline {
+    font-family: 'Shrikhand', cursive;
+    color: white;
+    position: fixed;
+    font-size: 10vh;
+    line-height: 8vh;
+    text-shadow: rebeccapurple 4px 2px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-9deg);
+
+    span{
+      display: block;
+      font-size: 5vh;
+    }
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+#Banner__clip{
+
+  transform: rotate(360deg) scale(8) translate(1.5vw, -1.0vh);;
+}
